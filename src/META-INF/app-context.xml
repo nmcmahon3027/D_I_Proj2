@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <description>Wiring the dependencies for the Apartment Finder Application.</description>
+  <!--  <context:component-scan base-package="src" />-->
+
+
+
+    <bean id = "firstGui" class = "view.GUI" scope="prototype"/>
+    <bean id ="mainClassGUI" class = "view.Runner" scope="prototype">
+        <constructor-arg ref="twoBed"/>
+        <property name="firstGui" ref="firstGui"/>
+    </bean>
+    <bean id = "oneBed" class="dal.OneBed" scope="prototype"/>
+    <bean id = "dates" class ="model.pricing.dates.StudioMoveInDates" scope="prototype">
+        <property name="visitDates" ref="visitDates"/>
+    </bean>
+
+    <bean id = "visitRent" class ="view.Runner" scope="prototype">
+        <constructor-arg ref="threeBed"/>
+    </bean>
+    <bean id = "visitDates" class ="view.Runner" scope="prototype">
+        <constructor-arg ref="twoBed"/>
+        <property name="firstGui" ref="mainClassGUI"/>
+    </bean>
+
+    <bean id = "twoBed" class ="model.pricing.floors.AllAvailableFloors" scope="prototype">
+        <constructor-arg index="0" value="object"/>
+        <constructor-arg index="1" value="object"/>
+    </bean>
+    <bean id = "threeBed" class  ="model.pricing.floors.AllAvailableFloors" scope="prototype">
+        <constructor-arg index="0" value="object"/>
+        <constructor-arg index="1" value=""/>
+    </bean>
+    <bean id="studioFloors" class="model.pricing.floors.FloorsAvailable" abstract="true"/>
+
+
 
 </beans>

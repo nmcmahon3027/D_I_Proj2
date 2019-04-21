@@ -1,9 +1,10 @@
 package view;
 
+import dal.Apartments;
 import dal.OneBed;
 
 public interface UserGUI {
-	void printMainMenu();
+	Apartments printMainMenu();
 	void printOneBedMenu();
 	void printTwoBedMenu();
 	void printThreeBedMenu();

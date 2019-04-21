@@ -1,23 +1,28 @@
 package model.pricing.dates;
 
-import dal.OneBed;
-import dal.Studio;
-import dal.ThreeBed;
-import dal.TwoBed;
+import dal.*;
+import view.Runner;
 
 public class StudioMoveInDates implements MoveInDates {
 	@Override
-	public void visitStudioDates(Studio studio) {
-		System.out.println("The move-in dates for a studio are: \n" +
-								   "May, June, August, September");
+	public String visitStudioDates(Studio studio) {
+		 return "The move-in dates for a studio are: \n" +
+								   "May, June, August, September";
 
 	}
 
 	@Override
-	public void visitOneBedDates(OneBed oneBed) {
-		System.out.println("The move-in dates for a one bedroom are: \n" +
-								   "May, August, September, October");
+	public String visitOneBedDates(OneBed oneBed) {
 
+		return "The move-in dates for a one bedroom are: \n" +
+								   "May, August, September, October";
+
+	}
+
+	@Override
+	public Apartments visitStudioDates() {
+		System.out.println("THE MOVE IN DATES FOR A STUDIO ");
+		return null;
 	}
 
 	@Override
@@ -31,6 +36,10 @@ public class StudioMoveInDates implements MoveInDates {
 	public void visitThreeBedDates(ThreeBed threeBed) {
 		System.out.println("The move-in dates for a three bedroom are: \n" +
 								   "June, August, November");
+
+	}
+
+	public void setVisitDates(Runner visitDates) {
 
 	}
 }

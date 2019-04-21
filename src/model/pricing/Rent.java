@@ -10,5 +10,9 @@ public interface Rent {
 	void visitOneBed(OneBed oneBed);
 	void visitTwoBed(TwoBed twoBed);
 	void visitThreeBed(ThreeBed threeBed);
+	void printStudioRent();
+	void printOneBedRent();
+	void printTwoBedRent();
+	void printThreeBedRent();
 
 }
